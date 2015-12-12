@@ -43,4 +43,4 @@ define Package/$(PKG_NAME)/install
 	$(INSTALL_BIN) ./files/root/etc/uci-defaults/$(PKG_NAME) $(1)/etc/uci-defaults/$(PKG_NAME)
 endef
 
-$(eval $(call BuildPackage,$(PKG_NAME)))
+$(eval $(call BuildPackage,luci-app-dnsmasq-full)))
