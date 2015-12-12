@@ -36,11 +36,9 @@ endef
 define Package/$(PKG_NAME)/install
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/model/cbi
 	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/controller
-	$(INSTALL_DIR) $(1)/etc/uci-defaults
 	
 	$(INSTALL_DATA) ./files/luci/controller/$(PKG_NAME).lua $(1)/usr/lib/lua/luci/controller/$(PKG_NAME).lua
 	$(INSTALL_DATA) ./files/luci/model/cbi/$(PKG_NAME).lua $(1)/usr/lib/lua/luci/model/cbi/$(PKG_NAME).lua
-	$(INSTALL_BIN) ./files/root/etc/uci-defaults/$(PKG_NAME) $(1)/etc/uci-defaults/$(PKG_NAME)
 endef
 
 $(eval $(call BuildPackage,$(PKG_NAME)))
