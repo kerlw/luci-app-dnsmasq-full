@@ -34,12 +34,13 @@ define Build/Compile
 endef
 
 define Package/$(PKG_NAME)/install
+    $(INSTALL_DIR) $(1)/usr/lib/lua/luci/model/cbi
     $(INSTALL_DIR) $(1)/usr/lib/lua/luci/controller
-	$(INSTALL_DATA) ./files/luci/controller/$(2).lua $(1)/usr/lib/lua/luci/controller/$(2).lua
-	$(INSTALL_DIR) $(1)/usr/lib/lua/luci/model/cbi
-	$(INSTALL_DATA) ./files/luci/model/cbi/$(2).lua $(1)/usr/lib/lua/luci/model/cbi/$(2).lua
 	$(INSTALL_DIR) $(1)/etc/uci-defaults
-	$(INSTALL_BIN) ./files/root/etc/uci-defaults/luci-$(2) $(1)/etc/uci-defaults/luci-$(2)
+	
+	$(INSTALL_DATA) ./files/luci/controller/$(PKG_NAME).lua $(1)/usr/lib/lua/luci/controller/$(PKG_NAME).lua
+	$(INSTALL_DATA) ./files/luci/model/cbi/$(PKG_NAME).lua $(1)/usr/lib/lua/luci/model/cbi/$(PKG_NAME).lua
+	$(INSTALL_BIN) ./files/root/etc/uci-defaults/$(PKG_NAME) $(1)/etc/uci-defaults/$(PKG_NAME)
 endef
 
 $(eval $(call BuildPackage,$(PKG_NAME)))
