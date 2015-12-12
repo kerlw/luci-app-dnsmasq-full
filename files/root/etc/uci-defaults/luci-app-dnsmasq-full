@@ -1,0 +1,11 @@
+#!/bin/sh
+
+uci -q batch <<-EOF >/dev/null
+	delete ucitrack.@luci-app-dnsmasq-full[-1]
+	add ucitrack luci-app-dnsmasq-full
+	set ucitrack.@luci-app-dnsmasq-full[-1].init=luci-app-dnsmasq-full
+	commit ucitrack
+EOF
+
+rm -f /tmp/luci-indexcache
+exit 0
