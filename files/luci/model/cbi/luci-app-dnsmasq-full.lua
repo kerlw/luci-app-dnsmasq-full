@@ -22,4 +22,9 @@ function o.write(self, section, value)
 	fs.writefile("/etc/dnsmasq.d/custom.conf", value)
 end
 
+local apply = luci.http.formvalue("cbi.apply")
+	if apply then
+		io.popen("/etc/init.d/dnsmasq restart")
+	end
+
 return f
